@@ -21,3 +21,14 @@ function showSection(sectionId) {
     document.getElementById(sectionId).classList.remove("hidden");
 }
 */
+<script>
+    document.getElementById("horas-input").addEventListener("input", function () {
+        if (this.value > 8) {
+            this.value = 8;
+            alert("No puedes ingresar más de 8 horas diarias.");
+        } else if (this.value < 0) {
+            this.value = 0;
+            alert("Las horas no pueden ser negativas.");
+        }
+    });
+</script>
