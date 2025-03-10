@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
-<link rel="stylesheet" href="styles.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        .container { width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        .container { width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; position: relative; }
         .hidden { display: none; }
         button { margin-top: 10px; padding: 10px; width: 100%; cursor: pointer; }
+        .back-button { position: absolute; top: 10px; left: 10px; background: none; border: none; font-size: 18px; cursor: pointer; }
     </style>
 </head>
 <body>
+    <!-- Pantalla de Inicio de Sesión -->
     <div id="login" class="container">
         <h2>Sign in</h2>
         <label>Usuario:</label>
@@ -22,6 +23,7 @@
         <button onclick="login()">Connect</button>
     </div>
 
+    <!-- Menú Principal -->
     <div id="menu" class="container hidden">
         <h2>Menú Principal</h2>
         <button onclick="showSection('vista')">Vista General</button>
@@ -29,12 +31,39 @@
         <button onclick="showSection('admin')">Admin</button>
     </div>
 
+    <!-- Vista General -->
     <div id="vista" class="container hidden">
+        <button class="back-button" onclick="showSection('menu')">←</button>
         <h2>Vista General</h2>
-        <button onclick="showSection('menu')">Volver</button>
+        <table border="1" width="100%">
+            <tr>
+                <th>Día</th>
+                <th>Tarea</th>
+                <th>Detalles</th>
+            </tr>
+            <tr>
+                <td>Lunes</td>
+                <td>Reunión</td>
+                <td><button onclick="showSection('detalle')">Ver más</button></td>
+            </tr>
+            <tr>
+                <td>Martes</td>
+                <td>Desarrollo</td>
+                <td><button onclick="showSection('detalle')">Ver más</button></td>
+            </tr>
+        </table>
     </div>
 
+    <!-- Detalles del Planning -->
+    <div id="detalle" class="container hidden">
+        <button class="back-button" onclick="showSection('vista')">←</button>
+        <h2>Detalles del Planning</h2>
+        <p>Aquí iría la información detallada del día seleccionado.</p>
+    </div>
+
+    <!-- Horas -->
     <div id="horas" class="container hidden">
+        <button class="back-button" onclick="showSection('menu')">←</button>
         <h2>Horas</h2>
         <label>Tareas:</label>
         <select>
@@ -44,10 +73,11 @@
         <label>Horas Realizadas:</label>
         <input type="number"><br><br>
         <button>Enviar</button>
-        <button onclick="showSection('menu')">Volver</button>
     </div>
 
+    <!-- Admin -->
     <div id="admin" class="container hidden">
+        <button class="back-button" onclick="showSection('menu')">←</button>
         <h2>Admin</h2>
         <button onclick="showSection('menu')">Volver</button>
     </div>
