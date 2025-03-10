@@ -16,11 +16,7 @@ function logout() {
 }
 
 function showSection(sectionId) {
-    let sections = document.querySelectorAll("div");
-    sections.forEach(section => {
-        if (section.id !== "login-screen") {
-            section.classList.add("hidden");
-        }
-    });
+    let sections = document.querySelectorAll(".container");
+    sections.forEach(section => section.classList.add("hidden"));
     document.getElementById(sectionId).classList.remove("hidden");
 }
