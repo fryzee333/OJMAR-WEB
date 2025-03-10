@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- Pantalla de Inicio de Sesión -->
-    <div id="login-screen">
+    <div id="login-screen" class="container">
         <h2>Sign in</h2>
         <label>Usuario:</label>
         <input type="text" id="username">
@@ -19,46 +19,29 @@
     </div>
 
     <!-- Menú Principal -->
-    <div id="main-menu" class="hidden">
+    <div id="main-menu" class="container hidden">
         <button class="back-button" onclick="logout()">←</button>
-        <h2>Menú Principal</h2>
-        <button onclick="showSection('vista-general')">Vista General</button>
-        <button onclick="showSection('horas')">Horas</button>
+        <h2>Vista General</h2>
+        <button onclick="showSection('vista-general')">Horas</button>
         <button onclick="showSection('admin')">Admin</button>
     </div>
 
     <!-- Vista General -->
-    <div id="vista-general" class="hidden">
+    <div id="vista-general" class="container hidden">
         <button class="back-button" onclick="showSection('main-menu')">←</button>
         <h2>Planning</h2>
-        <table>
-            <tr>
-                <th>Día</th>
-                <th>Tarea</th>
-                <th>Detalle</th>
-            </tr>
-            <tr>
-                <td>Lunes</td>
-                <td>Reunión</td>
-                <td><button onclick="showSection('detalle-planning')">Ver más</button></td>
-            </tr>
-            <tr>
-                <td>Martes</td>
-                <td>Desarrollo</td>
-                <td><button onclick="showSection('detalle-planning')">Ver más</button></td>
-            </tr>
-        </table>
+        <button onclick="showSection('detalle-planning')">Ver Detalles</button>
     </div>
 
     <!-- Detalle del Planning -->
-    <div id="detalle-planning" class="hidden">
+    <div id="detalle-planning" class="container hidden">
         <button class="back-button" onclick="showSection('vista-general')">←</button>
         <h2>Detalles del Planning</h2>
         <p>Aquí iría la información detallada del día seleccionado.</p>
     </div>
 
     <!-- Horas -->
-    <div id="horas" class="hidden">
+    <div id="horas" class="container hidden">
         <button class="back-button" onclick="showSection('main-menu')">←</button>
         <h2>Horas</h2>
         <label>Tareas:</label>
@@ -72,7 +55,7 @@
     </div>
 
     <!-- Admin -->
-    <div id="admin" class="hidden">
+    <div id="admin" class="container hidden">
         <button class="back-button" onclick="showSection('main-menu')">←</button>
         <h2>Panel de Administración</h2>
         <p>Aquí puedes gestionar los datos.</p>
@@ -81,3 +64,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
