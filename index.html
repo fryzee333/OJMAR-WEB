@@ -1,59 +1,67 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="es">
 <link rel="stylesheet" href="styles.css">
 <head>
-    <!-- Métadonnées de la page -->
-    <meta charset="UTF-8"> <!-- Encodage des caractères -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adaptation aux appareils mobiles -->
-    <meta name="description" content="Description de votre site ici."> <!-- Description du site pour les moteurs de recherche -->
-    <meta name="author" content="Votre Nom"> <!-- Auteur du site -->
-
-    <!-- Titre de la page -->
-    <title>Mon Site Web</title>
-
-    <!-- Fichiers CSS -->
-    <link rel="stylesheet" href="styles.css"> <!-- Lien vers un fichier CSS externe -->
-
-    <!-- Icône de la page (favicon) -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Scripts supplémentaires dans le head (optionnel) -->
-    <!-- <script src="script.js" defer></script> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .container { width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        .hidden { display: none; }
+        button { margin-top: 10px; padding: 10px; width: 100%; cursor: pointer; }
+    </style>
 </head>
 <body>
+    <div id="login" class="container">
+        <h2>Sign in</h2>
+        <label>Usuario:</label>
+        <input type="text" id="user"><br><br>
+        <label>Contraseña:</label>
+        <input type="password" id="password"><br><br>
+        <button onclick="login()">Connect</button>
+    </div>
 
-    <!-- En-tête de la page -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">À propos</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="menu" class="container hidden">
+        <h2>Menú Principal</h2>
+        <button onclick="showSection('vista')">Vista General</button>
+        <button onclick="showSection('horas')">Horas</button>
+        <button onclick="showSection('admin')">Admin</button>
+    </div>
 
-    <!-- Section principale du contenu -->
-    <main>
-        <section>
-            <h1>Bienvenue sur mon site !</h1>
-            <p>Ceci est une page d'exemple.</p>
-            <button onclick="alert('Bonjour !')">Cliquez ici</button>
-        </section>
+    <div id="vista" class="container hidden">
+        <h2>Vista General</h2>
+        <button onclick="showSection('menu')">Volver</button>
+    </div>
 
-        <section>
-            <h2>À propos</h2>
-            <p>Une brève description de ton site ou de ton entreprise.</p>
-        </section>
-    </main>
+    <div id="horas" class="container hidden">
+        <h2>Horas</h2>
+        <label>Tareas:</label>
+        <select>
+            <option>Tarea 1</option>
+            <option>Tarea 2</option>
+        </select><br><br>
+        <label>Horas Realizadas:</label>
+        <input type="number"><br><br>
+        <button>Enviar</button>
+        <button onclick="showSection('menu')">Volver</button>
+    </div>
 
-    <!-- Pied de page -->
-    <footer>
-        <p>&copy; 2025 Mon Site Web. Tous droits réservés.</p>
-    </footer>
+    <div id="admin" class="container hidden">
+        <h2>Admin</h2>
+        <button onclick="showSection('menu')">Volver</button>
+    </div>
 
-    <!-- Scripts JavaScript -->
-    <script src="script.js"></script> <!-- Lien vers un fichier JavaScript externe -->
+    <script>
+        function login() {
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('menu').classList.remove('hidden');
+        }
+
+        function showSection(section) {
+            document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
+            document.getElementById(section).classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
