@@ -26,8 +26,8 @@ button {
 
 .back-button {
     position: absolute;
-    top: 10px;
-    left: 10px; /* Asegura que esté en la esquina izquierda */
+    top: -4px;
+    left: -125px; /* Asegura que esté en la esquina izquierda */
     background: none;
     border: none;
     font-size: 18px;
