@@ -7,13 +7,13 @@ body {
 }
 
 .container {
-    width: 300px;
+    width: 350px; /* Aumenta el tamaño de la pestaña */
     margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd; /* Borde gris suave */
+    padding: 30px; /* Aumenta el espacio interno */
+    border: 1px solid #ddd;
     border-radius: 10px;
     position: relative;
-    background-color: #fff; /* Fondo blanco */
+    background-color: #fff;
 }
 
 button {
@@ -36,10 +36,11 @@ button:hover {
     position: absolute;
     top: -4px;
     left: -127px;
-    background: none;
-    border: none;
+    background: none; /* Elimina el fondo azul */
+    border: none; /* Elimina el borde */
     font-size: 18px;
     cursor: pointer;
+    color: #006f95; /* Color azul */
 }
 
 table {
