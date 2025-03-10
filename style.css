@@ -36,7 +36,7 @@ button:hover {
     position: absolute;
     top: -4px;
     left: -40px; /* Ajustado para que esté más cerca de la esquina */
-    background: none;
+    background-color: transparent; /* Fondo transparente */
     border: none;
     font-size: 20px; /* Un poco más grande para que sea más visible */
     cursor: pointer;
