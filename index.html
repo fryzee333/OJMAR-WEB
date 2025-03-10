@@ -6,11 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        .container { width: 400px; margin: auto; padding: 40px; border: 1px solid #ddd; border-radius: 10px; position: relative; }
-        .hidden { display: none; }
-        button { margin-top: 10px; padding: 10px; width: 100%; cursor: pointer; }
-        .back-button { position: absolute; top: -4px; left: -127px; background: none; border: none; font-size: 18px; cursor: pointer; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f7f7f7; /* Fondo más claro */
+        }
+        .container {
+            width: 400px;
+            margin: auto;
+            padding: 40px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            position: relative;
+            background-color: #fff;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            background-color: #006f95; /* Azul */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005b7f; /* Hover azul más oscuro */
+        }
+
+        /* Estilo para el botón de Volver */
+        .back-button {
+            position: absolute;
+            top: -4px;
+            left: -40px; /* Ajusta la posición */
+            background-color: transparent; /* Fondo transparente */
+            border: none; /* Elimina el borde */
+            font-size: 20px; /* Tamaño más grande para la flecha */
+            cursor: pointer;
+            color: #007bff; /* Color azul suave */
+            transition: color 0.3s ease; /* Transición suave */
+        }
+        .back-button:hover {
+            color: #0056b3; /* Azul más oscuro cuando pasas el cursor */
+        }
+
+        /* Estilo de la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #006f95; /* Azul */
+            color: #fff;
+        }
+        td button {
+            background-color: #4caf50; /* Verde */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        td button:hover {
+            background-color: #45a049; /* Hover verde más oscuro */
+        }
     </style>
 </head>
 <body>
@@ -77,31 +145,31 @@
     </div>
 
     <!-- Admin -->
-        <div id="admin" class="container hidden">
-            <button class="back-button" onclick="showSection('menu')">←</button>
-            <h2>Administración de Horas</h2>
-        
-            <table border="1" width="100%">
-                <tr>
-                    <th>Usuario</th>
-                    <th>Tarea</th>
-                    <th>Horas Realizadas</th>
-                    <th>Acción</th>
-                </tr>
-                <tr>
-                    <td>Juan</td>
-                    <td>Reunión</td>
-                    <td><input type="number" class="horas-editable" min="0" max="8" value="5"></td>
-                    <td><button onclick="guardarCambios()">Guardar</button></td>
-                </tr>
-                <tr>
-                    <td>María</td>
-                    <td>Desarrollo</td>
-                    <td><input type="number" class="horas-editable" min="0" max="8" value="7"></td>
-                    <td><button onclick="guardarCambios()">Guardar</button></td>
-                </tr>
-            </table>
-        </div>
+    <div id="admin" class="container hidden">
+        <button class="back-button" onclick="showSection('menu')">←</button>
+        <h2>Administración de Horas</h2>
+        <table border="1" width="100%">
+            <tr>
+                <th>Usuario</th>
+                <th>Tarea</th>
+                <th>Horas Realizadas</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <td>Juan</td>
+                <td>Reunión</td>
+                <td><input type="number" class="horas-editable" min="0" max="8" value="5"></td>
+                <td><button onclick="guardarCambios()">Guardar</button></td>
+            </tr>
+            <tr>
+                <td>María</td>
+                <td>Desarrollo</td>
+                <td><input type="number" class="horas-editable" min="0" max="8" value="7"></td>
+                <td><button onclick="guardarCambios()">Guardar</button></td>
+            </tr>
+        </table>
+    </div>
+
     <script>
         function login() {
             document.getElementById('login').classList.add('hidden');
@@ -111,6 +179,20 @@
         function showSection(section) {
             document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
             document.getElementById(section).classList.remove('hidden');
+        }
+
+        function guardarCambios() {
+            let horasInputs = document.querySelectorAll(".horas-editable");
+            horasInputs.forEach(input => {
+                if (input.value > 8) {
+                    input.value = 8;
+                    alert("No puedes ingresar más de 8 horas.");
+                } else if (input.value < 0) {
+                    input.value = 0;
+                    alert("Las horas no pueden ser negativas.");
+                }
+            });
+            alert("Cambios guardados correctamente.");
         }
     </script>
 </body>
