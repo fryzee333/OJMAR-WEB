@@ -43,24 +43,17 @@
             position: absolute;
             top: -4px;
             left: -200px;
-            background-color: #ffffff00;
-            border: none;
-            font-size: 20px;
+            background-color: transparent; /* Fondo completamente transparente */
+            border: none; /* Sin borde */
+            font-size: 20px; /* Tamaño de la flecha */
             cursor: pointer;
-            color: #007bff;
+            color: #007bff; /* Color azul */
             transition: color 0.3s ease, background-color 0.3s ease;
         }
-        /* Fondo transparente cuando pasas el ratón */
+        /* Sin fondo cuando pasas el ratón */
         .back-button:hover {
-            background-color: transparent; /* Fondo transparente */
-            color: #005b7f; /* Cambiar el color del texto al pasar el ratón */
-        }
-
-        /* Estilo para el botón de Volver con fondo diferente cuando es clickeado */
-        .back-button-clicked {
-            background-color: #f5f5f5; /* Fondo gris claro cuando se hace clic */
-            color: #007bff;
-            border-radius: 5px;
+            background-color: transparent; /* Aseguramos que el fondo siga transparente */
+            color: #005b7f; /* Color del texto cambia al pasar el ratón */
         }
 
         /* Estilo de la tabla */
@@ -191,8 +184,6 @@
 
         function goBack(section) {
             showSection(section);
-            const backButton = event.target;
-            backButton.classList.add('back-button-clicked');
         }
 
         function guardarCambios() {
