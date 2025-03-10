@@ -20,4 +20,4 @@ function showSection(sectionId) {
     sections.forEach(section => section.classList.add("hidden"));
     document.getElementById(sectionId).classList.remove("hidden");
 }
-*\
+
