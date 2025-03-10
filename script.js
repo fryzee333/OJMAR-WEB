@@ -21,14 +21,18 @@ function showSection(sectionId) {
     document.getElementById(sectionId).classList.remove("hidden");
 }
 */
-<script>
-    document.getElementById("horas-input").addEventListener("input", function () {
-        if (this.value > 8) {
-            this.value = 8;
-            alert("No puedes ingresar más de 8 horas diarias.");
-        } else if (this.value < 0) {
-            this.value = 0;
-            alert("Las horas no pueden ser negativas.");
+        <script>
+        function guardarCambios() {
+            let horasInputs = document.querySelectorAll(".horas-editable");
+            horasInputs.forEach(input => {
+                if (input.value > 8) {
+                    input.value = 8;
+                    alert("No puedes ingresar más de 8 horas.");
+                } else if (input.value < 0) {
+                    input.value = 0;
+                    alert("Las horas no pueden ser negativas.");
+                }
+            });
+            alert("Cambios guardados correctamente.");
         }
-    });
-</script>
+    </script>
