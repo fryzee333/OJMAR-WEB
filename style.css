@@ -7,10 +7,21 @@ body {
     display: none;
 }
 
+.container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
 button {
     margin: 10px;
     padding: 10px;
     cursor: pointer;
+    display: block;
+    width: 100%;
 }
 
 .back-button {
@@ -22,16 +33,4 @@ button {
     background: none;
     border: none;
     cursor: pointer;
-}
-
-table {
-    margin: 20px auto;
-    border-collapse: collapse;
-    width: 80%;
-}
-
-th, td {
-    border: 1px solid black;
-    padding: 10px;
-    text-align: center;
 }
