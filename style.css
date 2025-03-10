@@ -35,12 +35,17 @@ button:hover {
 .back-button {
     position: absolute;
     top: -4px;
-    left: -127px;
-    background: none; /* Elimina el fondo azul */
-    border: none; /* Elimina el borde */
-    font-size: 18px;
+    left: -40px; /* Ajustado para que esté más cerca de la esquina */
+    background: none;
+    border: none;
+    font-size: 20px; /* Un poco más grande para que sea más visible */
     cursor: pointer;
-    color: #006f95; /* Color azul */
+    color: #007bff; /* Color azul más suave */
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+.back-button:hover {
+    color: #0056b3; /* Azul más oscuro cuando pasas el cursor */
 }
 
 table {
