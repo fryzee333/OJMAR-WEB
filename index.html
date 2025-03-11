@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres para el documento -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Asegura que la página sea responsive -->
     <title>Inicio de Sesión</title>
-    <link rel="stylesheet" href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css">
-    <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
+    <link rel="stylesheet" href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css"> <!-- Enlace a la librería CSS de DHTMLX Gantt -->
+    <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script> <!-- Enlace a la librería JS de DHTMLX Gantt -->
     <style>
+        /* Estilos generales para el cuerpo de la página */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 20px;
             background-color: #f7f7f7;
         }
-        .container {
-            width: 400px;
+
+        /* Estilos para los contenedores del login y menús */
+        .container, .containerbis {
+            width: 90%;
+            max-width: 400px;
             margin: auto;
-            padding: 40px;
+            padding: 20px;
             border: 1px solid #ddd;
             border-radius: 10px;
             position: relative;
             background-color: #fff;
         }
 
-
-        .containerbis { 
-            width: 800px;
-            margin: auto;
-            padding: 40px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            position: relative;
-            background-color: #fff;
+        /* La clase containerbis es para el contenedor más grande que incluye el Gantt */
+        .containerbis {
+            max-width: 800px;
         }
 
-
+        /* Estilo para esconder elementos cuando no se usan */
         .hidden {
             display: none;
         }
 
+        /* Estilos para los botones */
         button {
             margin-top: 10px;
-            padding: 10px;
+            padding: 12px;
             width: 100%;
             cursor: pointer;
             background-color: #006f95;
@@ -52,16 +51,17 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
+        /* Efecto hover en los botones */
         button:hover {
             background-color: #005b7f;
             transform: scale(1.05);
         }
 
-        /* Animation for Back Button */
+        /* Estilo para el botón de volver */
         .back-button {
             position: absolute;
-            top: -4px;
-            left: -200px;
+            top: -7px;
+            left: -170px;
             background-color: transparent;
             border: none;
             font-size: 20px;
@@ -70,16 +70,18 @@
             transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
         }
 
+        /* Efecto hover en el botón de volver */
         .back-button:hover {
             background-color: transparent;
             color: #005b7f;
             transform: translateX(10px);
         }
 
-        /* Estilo de la tabla */
+        /* Estilos para la tabla en la sección de horas */
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
         th, td {
             padding: 10px;
@@ -103,33 +105,59 @@
             transform: scale(1.1);
         }
 
+        /* Estilos para el contenedor de Gantt */
         #gantt_here {
             width: 100%;
             height: 500px;
         }
 
+        /* Estilo para la imagen en la esquina superior derecha */
         .top-right-image {
             position: absolute;
             top: 10px;
             right: 10px;
-            width: 28px; /* Ajusta el tamaño según sea necesario */
+            width: 28px;
             height: auto;
             transition: transform 0.3s ease;
         }
 
+        /* Efecto hover en la imagen en la esquina superior derecha */
         .top-right-image:hover {
             transform: scale(1.1);
         }
 
-                /* Evitar el zoom en las pestañas */
-                .container, .containerbis {
-            transition: none; /* Se quita cualquier efecto de zoom o transición */
-        }
+        /* Ajustes para diseño responsive */
+        @media (max-width: 600px) {
+            .container, .containerbis {
+                width: 90%;
+                padding: 15px;
+            }
 
+            .top-right-image {
+                width: 24px;
+            }
+
+            button {
+                padding: 12px;
+            }
+
+            .back-button {
+                font-size: 18px;
+            }
+
+            table th, table td {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            table input {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Pantalla de Inicio de Sesión -->
+    <!-- Sección de login -->
     <div id="login" class="container">
         <a href="https://www.ojmar.com/es/" target="_blank">
             <img src="descarga-removebg-preview.png" alt="Imagen" class="top-right-image">
@@ -139,41 +167,43 @@
         <input type="text" id="user"><br><br>
         <label>Contraseña:</label>
         <input type="password" id="password"><br><br>
-        <button onclick="login()">Connect</button>
+        <button onclick="login()">Connect</button> <!-- Botón para conectar -->
     </div>
 
-    <!-- Menú Principal (oculto inicialmente) -->
+    <!-- Sección de menú principal -->
     <div id="menu" class="container hidden">
         <h2>Menú Principal</h2>
         <a href="https://www.ojmar.com/es/" target="_blank">
             <img src="descarga-removebg-preview.png" alt="Imagen" class="top-right-image">
         </a>
-        <button onclick="showSection('vista')">Vista General</button>
-        <button onclick="showSection('horas')">Horas</button>
-        <button onclick="showSection('admin')">Admin</button>
+        <button onclick="showSection('vista')">Vista General</button> <!-- Botón para mostrar vista general -->
+        <button onclick="showSection('horas')">Horas</button> <!-- Botón para mostrar horas -->
+        <button onclick="showSection('admin')">Admin</button> <!-- Botón para mostrar administración -->
     </div>
 
-    <!-- Vista General (oculta inicialmente) -->
+    <!-- Sección de Vista General -->
     <div id="vista" class="containerbis hidden">
-        <button class="back-button" onclick="goBack('menu')">←</button>
+        <button class="back-button" onclick="goBack('menu')">←</button> <!-- Botón de volver -->
         <a href="https://www.ojmar.com/es/" target="_blank">
             <img src="descarga-removebg-preview.png" alt="Imagen" class="top-right-image">
         </a>
         <h2>Vista General</h2>
-        <div id="gantt_here" style="margin-top: 20px;"></div>
+        <div id="gantt_here" style="margin-top: 20px;"></div> <!-- Contenedor para el gráfico de Gantt -->
     </div>
 
     <script>
+        // Función para mostrar diferentes secciones de la página
         function goBack(sectionId) {
             showSection(sectionId);
         }
 
+        // Función para mostrar una sección y ocultar las demás
         function showSection(sectionId) {
             document.querySelectorAll('.container, .containerbis').forEach(el => el.classList.add('hidden'));
             document.getElementById(sectionId).classList.remove('hidden');
         }
 
-        // Gantt Chart Initialization
+        // Inicializa el gráfico de Gantt
         gantt.init("gantt_here");
         gantt.parse({
             data: [
@@ -185,19 +215,19 @@
             ]
         });
 
-        // Login function
+        // Función para iniciar sesión
         function login() {
             document.getElementById('login').classList.add('hidden');
             document.getElementById('menu').classList.remove('hidden');
         }
 
-        // Mostrar la pantalla de inicio de sesión
+        // Al cargar la página, muestra la sección de login
         window.onload = function() {
             showSection('login');
         }
     </script>
 
-    <!-- Horas -->
+    <!-- Sección de registro de horas trabajadas -->
     <div id="horas" class="container hidden">
         <button class="back-button" onclick="goBack('menu')">←</button>
         <a href="https://www.ojmar.com/es/" target="_blank">
@@ -205,6 +235,7 @@
         </a>
         <h2>Horas</h2>
         <h3>Registra tus horas trabajadas</h3>
+        <!-- Tabla para ingresar las horas -->
         <table>
             <tr>
                 <th>Tarea</th>
@@ -231,10 +262,10 @@
                 <td><input type="number" id="patentes-input" value="0" min="0" max="8"></td>
             </tr>
         </table>
-        <button onclick="guardarHoras()">Guardar Horas</button>
+        <button onclick="guardarHoras()">Guardar Horas</button> <!-- Botón para guardar las horas -->
     </div>
 
-    <!-- Admin -->
+    <!-- Sección de administración de horas -->
     <div id="admin" class="container hidden">
         <button class="back-button" onclick="goBack('menu')">←</button>
         <a href="https://www.ojmar.com/es/" target="_blank">
@@ -242,6 +273,7 @@
         </a>
         <h2>Admin</h2>
         <h3>Modifica las horas trabajadas</h3>
+        <!-- Tabla para editar las horas -->
         <table>
             <tr>
                 <th>Tarea</th>
@@ -268,11 +300,11 @@
                 <td><input type="number" id="patentes-admin-input" value="0" min="0" max="8"></td>
             </tr>
         </table>
-        <button onclick="guardarHorasAdmin()">Guardar Horas Admin</button>
+        <button onclick="guardarHorasAdmin()">Guardar Horas Admin</button> <!-- Botón para guardar las horas modificadas -->
     </div>
 
     <script>
-        // Función para guardar las horas ingresadas por el usuario
+        // Función para guardar las horas trabajadas por un usuario
         function guardarHoras() {
             let fase1Horas = document.getElementById('fase1-input').value;
             let detalleHoras = document.getElementById('detalle-input').value;
@@ -280,12 +312,14 @@
             let factibilidadHoras = document.getElementById('factibilidad-input').value;
             let patentesHoras = document.getElementById('patentes-input').value;
 
+            // Validación para asegurar que las horas estén entre 0 y 8
             if (fase1Horas < 0 || fase1Horas > 8) return alert("Las horas deben estar entre 0 y 8");
             if (detalleHoras < 0 || detalleHoras > 8) return alert("Las horas deben estar entre 0 y 8");
             if (lanzamientoHoras < 0 || lanzamientoHoras > 8) return alert("Las horas deben estar entre 0 y 8");
             if (factibilidadHoras < 0 || factibilidadHoras > 8) return alert("Las horas deben estar entre 0 y 8");
             if (patentesHoras < 0 || patentesHoras > 8) return alert("Las horas deben estar entre 0 y 8");
 
+            // Guardar las horas en el almacenamiento local
             const horasData = {
                 fase1: fase1Horas,
                 detalle: detalleHoras,
@@ -298,7 +332,7 @@
             alert("Horas guardadas correctamente");
         }
 
-        // Función para guardar las horas desde el panel de Admin
+        // Función para guardar las horas modificadas por un administrador
         function guardarHorasAdmin() {
             let fase1Horas = document.getElementById('fase1-admin-input').value;
             let detalleHoras = document.getElementById('detalle-admin-input').value;
@@ -306,6 +340,7 @@
             let factibilidadHoras = document.getElementById('factibilidad-admin-input').value;
             let patentesHoras = document.getElementById('patentes-admin-input').value;
 
+            // Crear un objeto con las horas modificadas
             const horasData = {
                 fase1: fase1Horas,
                 detalle: detalleHoras,
@@ -314,6 +349,7 @@
                 patentes: patentesHoras
             };
 
+            // Guardar las horas modificadas en el almacenamiento local
             localStorage.setItem('horasTrabajadas', JSON.stringify(horasData));
             alert("Horas modificadas correctamente");
         }
