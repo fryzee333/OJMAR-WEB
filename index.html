@@ -97,11 +97,23 @@
             width: 100%;
             height: 500px;
         }
+
+        .top-right-image {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 28px; /* Ajusta el tamaño según sea necesario */
+        height: auto;
+        }
+
     </style>
 </head>
 <body>
      <!-- Pantalla de Inicio de Sesión -->
      <div id="login" class="container">
+        <a href="https://www.ojmar.com/es/" target="_blank">
+            <img src="descarga-removebg-preview.png" alt="Imagen" class="top-right-image"> <!-- Imagen añadida -->
+        </a>
         <h2>Sign in</h2>
         <label>Usuario:</label>
         <input type="text" id="user"><br><br>
@@ -113,6 +125,9 @@
     <!-- Menú Principal (oculto inicialmente) -->
     <div id="menu" class="container hidden">
         <h2>Menú Principal</h2>
+        <a href="https://www.ojmar.com/es/" target="_blank">
+            <img src="descarga-removebg-preview.png" alt="Imagen" class="top-right-image"> <!-- Imagen añadida -->
+        </a>
         <button onclick="showSection('vista')">Vista General</button>
         <button onclick="showSection('horas')">Horas</button>
         <button onclick="showSection('admin')">Admin</button>
@@ -121,9 +136,13 @@
     <!-- Vista General (oculta inicialmente) -->
     <div id="vista" class="containerbis hidden">
         <button class="back-button" onclick="goBack('menu')">←</button>
+        <a href="https://www.ojmar.com/es/" target="_blank">
+            <img src="descarga-removebg-preview.png" alt="Imagen" class="top-right-image"> <!-- Imagen añadida -->
+        </a>
         <h2>Vista General</h2>
         <div id="gantt_here" style="margin-top: 20px;"></div>
     </div>
+    
     
     <script>
         function goBack(sectionId) {
@@ -162,6 +181,9 @@
     <!-- Horas -->
     <div id="horas" class="container hidden">
         <button class="back-button" onclick="goBack('menu')">←</button>
+        <a href="https://www.ojmar.com/es/" target="_blank">
+            <img src="descarga-removebg-preview.png" alt="Imagen" class="top-right-image"> <!-- Imagen añadida -->
+        </a>
         <h2>Horas</h2>
         <h3>Registra tus horas trabajadas</h3>
         <table>
@@ -196,6 +218,9 @@
     <!-- Admin -->
     <div id="admin" class="container hidden">
         <button class="back-button" onclick="goBack('menu')">←</button>
+        <a href="https://www.ojmar.com/es/" target="_blank">
+            <img src="descarga-removebg-preview.png" alt="Imagen" class="top-right-image"> <!-- Imagen añadida -->
+        </a>
         <h2>Admin</h2>
         <h3>Modifica las horas trabajadas</h3>
         <table>
