@@ -23,7 +23,7 @@
             background-color: #fff;
         }
 
-        .containerbis { /* Para el uso externo de la vista general */
+        .containerbis { 
             width: 800px;
             margin: auto;
             padding: 40px;
@@ -56,17 +56,17 @@
             position: absolute;
             top: -4px;
             left: -200px;
-            background-color: transparent; /* Fondo completamente transparente */
-            border: none; /* Sin borde */
-            font-size: 20px; /* Tamaño de la flecha */
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
             cursor: pointer;
-            color: #007bff; /* Color azul */
+            color: #007bff;
             transition: color 0.3s ease, background-color 0.3s ease;
         }
-        /* Sin fondo cuando pasas el ratón */
+
         .back-button:hover {
-            background-color: transparent; /* Aseguramos que el fondo siga transparente */
-            color: #005b7f; /* Color del texto cambia al pasar el ratón */
+            background-color: transparent;
+            color: #005b7f;
         }
 
         /* Estilo de la tabla */
@@ -100,8 +100,8 @@
     </style>
 </head>
 <body>
-    <!-- Pantalla de Inicio de Sesión -->
-    <div id="login" class="container">
+     <!-- Pantalla de Inicio de Sesión -->
+     <div id="login" class="container">
         <h2>Sign in</h2>
         <label>Usuario:</label>
         <input type="text" id="user"><br><br>
@@ -110,7 +110,7 @@
         <button onclick="login()">Connect</button>
     </div>
 
-    <!-- Menú Principal -->
+    <!-- Menú Principal (oculto inicialmente) -->
     <div id="menu" class="container hidden">
         <h2>Menú Principal</h2>
         <button onclick="showSection('vista')">Vista General</button>
@@ -118,29 +118,23 @@
         <button onclick="showSection('admin')">Admin</button>
     </div>
 
-    <!-- Vista General -->
+    <!-- Vista General (oculta inicialmente) -->
     <div id="vista" class="containerbis hidden">
         <button class="back-button" onclick="goBack('menu')">←</button>
         <h2>Vista General</h2>
-        
-        <!-- Gantt Chart -->
         <div id="gantt_here" style="margin-top: 20px;"></div>
     </div>
     
-            <script>
+    <script>
         function goBack(sectionId) {
-        // Muestra la sección correspondiente al ir atrás
-        showSection(sectionId);
-         }
-            
+            showSection(sectionId);
+        }
+
         function showSection(sectionId) {
-            // Oculta todas las secciones
             document.querySelectorAll('.container, .containerbis').forEach(el => el.classList.add('hidden'));
-            
-            // Muestra la sección que fue seleccionada
             document.getElementById(sectionId).classList.remove('hidden');
         }
-    
+
         // Gantt Chart Initialization
         gantt.init("gantt_here");
         gantt.parse({
@@ -152,89 +146,132 @@
                 { id: 5, text: "Análisis de Patentes", start_date: "06-08-2025", duration: 2, parent: 4, progress: 0 }
             ]
         });
-    </script>
 
-    <!-- Detalles del Planning -->
-    <div id="detalle" class="container hidden">
-        <button class="back-button" onclick="goBack('vista')">←</button>
-        <h2>Detalles del Planning</h2>
-        <p>Aquí iría la información detallada del día seleccionado.</p>
-    </div>
-
-    <!-- Horas -->
-    <div id="horas" class="container hidden">
-        <button class="back-button" onclick="goBack('menu')">←</button>
-        <h2>Horas</h2>
-        <label>Tareas:</label>
-        <select>
-            <option>Tarea 1</option>
-            <option>Tarea 2</option>
-        </select><br><br>
-        <label>Horas Realizadas:</label>
-        <input type="number" id="horas-input" min="0" max="8"><br><br>
-        <button>Enviar</button>
-    </div>
-
-    <!-- Admin -->
-    <div id="admin" class="container hidden">
-        <button class="back-button" onclick="goBack('menu')">←</button>
-        <h2>Administración de Horas</h2>
-        <table border="1" width="100%">
-            <tr>
-                <th>Usuario</th>
-                <th>Tarea</th>
-                <th>Horas Realizadas</th>
-                <th>Acción</th>
-            </tr>
-            <tr>
-                <td>Juan</td>
-                <td>Reunión</td>
-                <td><input type="number" class="horas-editable" min="0" max="8" value="5"></td>
-                <td><button onclick="guardarCambios()">Guardar</button></td>
-            </tr>
-            <tr>
-                <td>María</td>
-                <td>Desarrollo</td>
-                <td><input type="number" class="horas-editable" min="0" max="8" value="7"></td>
-                <td><button onclick="guardarCambios()">Guardar</button></td>
-            </tr>
-        </table>
-    </div>
-
-    <script>
+        // Login function
         function login() {
             document.getElementById('login').classList.add('hidden');
             document.getElementById('menu').classList.remove('hidden');
         }
 
-        function showSection(section) {
-            document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
-            document.getElementById(section).classList.remove('hidden');
+        // Mostrar la pantalla de inicio de sesión
+        window.onload = function() {
+            showSection('login');
+        }
+    </script>
+
+    <!-- Horas -->
+    <div id="horas" class="container hidden">
+        <button class="back-button" onclick="goBack('menu')">←</button>
+        <h2>Horas</h2>
+        <h3>Registra tus horas trabajadas</h3>
+        <table>
+            <tr>
+                <th>Tarea</th>
+                <th>Horas Realizadas</th>
+            </tr>
+            <tr>
+                <td>Fase 1</td>
+                <td><input type="number" id="fase1-input" value="0" min="0" max="8"></td>
+            </tr>
+            <tr>
+                <td>Definición de detalle</td>
+                <td><input type="number" id="detalle-input" value="0" min="0" max="8"></td>
+            </tr>
+            <tr>
+                <td>Lanzamiento</td>
+                <td><input type="number" id="lanzamiento-input" value="0" min="0" max="8"></td>
+            </tr>
+            <tr>
+                <td>Estudio Factibilidad</td>
+                <td><input type="number" id="factibilidad-input" value="0" min="0" max="8"></td>
+            </tr>
+            <tr>
+                <td>Análisis de Patentes</td>
+                <td><input type="number" id="patentes-input" value="0" min="0" max="8"></td>
+            </tr>
+        </table>
+        <button onclick="guardarHoras()">Guardar Horas</button>
+    </div>
+
+    <!-- Admin -->
+    <div id="admin" class="container hidden">
+        <button class="back-button" onclick="goBack('menu')">←</button>
+        <h2>Admin</h2>
+        <h3>Modifica las horas trabajadas</h3>
+        <table>
+            <tr>
+                <th>Tarea</th>
+                <th>Horas</th>
+            </tr>
+            <tr>
+                <td>Fase 1</td>
+                <td><input type="number" id="fase1-admin-input" value="0" min="0" max="8"></td>
+            </tr>
+            <tr>
+                <td>Definición de detalle</td>
+                <td><input type="number" id="detalle-admin-input" value="0" min="0" max="8"></td>
+            </tr>
+            <tr>
+                <td>Lanzamiento</td>
+                <td><input type="number" id="lanzamiento-admin-input" value="0" min="0" max="8"></td>
+            </tr>
+            <tr>
+                <td>Estudio Factibilidad</td>
+                <td><input type="number" id="factibilidad-admin-input" value="0" min="0" max="8"></td>
+            </tr>
+            <tr>
+                <td>Análisis de Patentes</td>
+                <td><input type="number" id="patentes-admin-input" value="0" min="0" max="8"></td>
+            </tr>
+        </table>
+        <button onclick="guardarHorasAdmin()">Guardar Horas Admin</button>
+    </div>
+
+    <script>
+        // Función para guardar las horas ingresadas por el usuario
+        function guardarHoras() {
+            let fase1Horas = document.getElementById('fase1-input').value;
+            let detalleHoras = document.getElementById('detalle-input').value;
+            let lanzamientoHoras = document.getElementById('lanzamiento-input').value;
+            let factibilidadHoras = document.getElementById('factibilidad-input').value;
+            let patentesHoras = document.getElementById('patentes-input').value;
+
+            if (fase1Horas < 0 || fase1Horas > 8) return alert("Las horas deben estar entre 0 y 8");
+            if (detalleHoras < 0 || detalleHoras > 8) return alert("Las horas deben estar entre 0 y 8");
+            if (lanzamientoHoras < 0 || lanzamientoHoras > 8) return alert("Las horas deben estar entre 0 y 8");
+            if (factibilidadHoras < 0 || factibilidadHoras > 8) return alert("Las horas deben estar entre 0 y 8");
+            if (patentesHoras < 0 || patentesHoras > 8) return alert("Las horas deben estar entre 0 y 8");
+
+            const horasData = {
+                fase1: fase1Horas,
+                detalle: detalleHoras,
+                lanzamiento: lanzamientoHoras,
+                factibilidad: factibilidadHoras,
+                patentes: patentesHoras
+            };
+
+            localStorage.setItem('horasTrabajadas', JSON.stringify(horasData));
+            alert("Horas guardadas correctamente");
         }
 
-        
-    function goBack(section) {
-        // Ocultar la sección de Vista General al hacer "Atrás"
-        if (section === 'menu') {
-            document.getElementById('vista').classList.add('hidden');
-        }
-        // Muestra la sección correspondiente al ir atrás
-        showSection(section);
-    }
+        // Función para guardar las horas desde el panel de Admin
+        function guardarHorasAdmin() {
+            let fase1Horas = document.getElementById('fase1-admin-input').value;
+            let detalleHoras = document.getElementById('detalle-admin-input').value;
+            let lanzamientoHoras = document.getElementById('lanzamiento-admin-input').value;
+            let factibilidadHoras = document.getElementById('factibilidad-admin-input').value;
+            let patentesHoras = document.getElementById('patentes-admin-input').value;
 
+            const horasData = {
+                fase1: fase1Horas,
+                detalle: detalleHoras,
+                lanzamiento: lanzamientoHoras,
+                factibilidad: factibilidadHoras,
+                patentes: patentesHoras
+            };
 
-        function guardarCambios() {
-            let horasInputs = document.querySelectorAll(".horas-editable");
-            horasInputs.forEach(input => {
-                if (input.value > 8) {
-                    input.value = 8;
-                    alert("No puedes ingresar más de 8 horas.");
-                } else if (input.value < 0) {
-                    input.value = 0;
-                    alert("Las horas no pueden ser negativas.");
-                }
-            });
-            alert("Cambios guardados correctamente.");
+            localStorage.setItem('horasTrabajadas', JSON.stringify(horasData));
+            alert("Horas modificadas correctamente");
         }
     </script>
 </body>
