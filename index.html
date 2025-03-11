@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css">
+    <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,6 +22,17 @@
             position: relative;
             background-color: #fff;
         }
+
+        .containerbis { /* Para el uso externo de la vista general */
+            width: 800px;
+            margin: auto;
+            padding: 40px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            position: relative;
+            background-color: #fff;
+        }
+
         .hidden {
             display: none;
         }
@@ -80,6 +93,10 @@
         td button:hover {
             background-color: #45a049;
         }
+        #gantt_here {
+            width: 100%;
+            height: 500px;
+        }
     </style>
 </head>
 <body>
@@ -102,27 +119,40 @@
     </div>
 
     <!-- Vista General -->
-    <div id="vista" class="container hidden">
+    <div id="vista" class="containerbis hidden">
         <button class="back-button" onclick="goBack('menu')">←</button>
         <h2>Vista General</h2>
-        <table border="1" width="100%">
-            <tr>
-                <th>Día</th>
-                <th>Tarea</th>
-                <th>Detalles</th>
-            </tr>
-            <tr>
-                <td>Lunes</td>
-                <td>Reunión</td>
-                <td><button onclick="showSection('detalle')">Ver más</button></td>
-            </tr>
-            <tr>
-                <td>Martes</td>
-                <td>Desarrollo</td>
-                <td><button onclick="showSection('detalle')">Ver más</button></td>
-            </tr>
-        </table>
+        
+        <!-- Gantt Chart -->
+        <div id="gantt_here" style="margin-top: 20px;"></div>
     </div>
+    
+            <script>
+        function goBack(sectionId) {
+        // Muestra la sección correspondiente al ir atrás
+        showSection(sectionId);
+         }
+            
+        function showSection(sectionId) {
+            // Oculta todas las secciones
+            document.querySelectorAll('.container, .containerbis').forEach(el => el.classList.add('hidden'));
+            
+            // Muestra la sección que fue seleccionada
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    
+        // Gantt Chart Initialization
+        gantt.init("gantt_here");
+        gantt.parse({
+            data: [
+                { id: 1, text: "Fase 1", start_date: "04-03-2025", duration: 168, progress: 0 },
+                { id: 2, text: "Definición de detalle", start_date: "16-09-2025", duration: 22, parent: 1, progress: 0 },
+                { id: 3, text: "Lanzamiento", start_date: "04-03-2025", duration: 1, parent: 1, progress: 0 },
+                { id: 4, text: "Estudio Factibilidad", start_date: "05-03-2025", duration: 167, progress: 0 },
+                { id: 5, text: "Análisis de Patentes", start_date: "06-08-2025", duration: 2, parent: 4, progress: 0 }
+            ]
+        });
+    </script>
 
     <!-- Detalles del Planning -->
     <div id="detalle" class="container hidden">
@@ -182,9 +212,16 @@
             document.getElementById(section).classList.remove('hidden');
         }
 
-        function goBack(section) {
-            showSection(section);
+        
+    function goBack(section) {
+        // Ocultar la sección de Vista General al hacer "Atrás"
+        if (section === 'menu') {
+            document.getElementById('vista').classList.add('hidden');
         }
+        // Muestra la sección correspondiente al ir atrás
+        showSection(section);
+    }
+
 
         function guardarCambios() {
             let horasInputs = document.querySelectorAll(".horas-editable");
