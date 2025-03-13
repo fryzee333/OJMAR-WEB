@@ -1,79 +1,149 @@
+       
+       
+        /* Estilos generales para el cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20px;
+            background-color: #f7f7f7;
+        }
 
+        /* Estilos para los contenedores del login y menús */
+        .container, .containerbis {
+            width: 90%;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            position: relative;
+            background-color: #fff;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
-    background-color: #f2f2f2; /* Fondo suave */
-    color: #333; /* Texto oscuro */
-}
+        /* La clase containerbis es para el contenedor más grande que incluye el Gantt */
+        .containerbis {
+            max-width: 800px;
+        }
 
-.container {
-    width: 350px; /* Aumenta el tamaño de la pestaña */
-    margin: auto;
-    padding: 30px; /* Aumenta el espacio interno */
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    position: relative;
-    background-color: #fff;
-}
+        /* Estilo para esconder elementos cuando no se usan */
+        .hidden {
+            display: none;
+        }
 
-button {
-    margin-top: 10px;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-    background-color: #006f95; /* Azul */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
+        /* Estilos para los botones */
+        button {
+            margin-top: 10px;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            background-color: #006f95;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-button:hover {
-    background-color: #005b7f; /* Hover azul más oscuro */
-}
+        /* Efecto hover en los botones */
+        button:hover {
+            background-color: #005b7f;
+            transform: scale(1.05);
+        }
 
-.back-button {
-    position: absolute;
-    top: -4px;
-    left: -40px; /* Ajustado para que esté más cerca de la esquina */
-    background-color: transparent; /* Fondo transparente */
-    border: none;
-    font-size: 20px; /* Un poco más grande para que sea más visible */
-    cursor: pointer;
-    color: #007bff; /* Color azul más suave */
-    transition: color 0.3s ease; /* Transición suave */
-}
+        /* Estilo para el botón de volver */
+        .back-button {
+            position: absolute;
+            top: -7px;
+            left: -170px;
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #007bff;
+            transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+        }
 
-.back-button:hover {
-    color: #0056b3; /* Azul más oscuro cuando pasas el cursor */
-}
+        /* Efecto hover en el botón de volver */
+        .back-button:hover {
+            background-color: transparent;
+            color: #005b7f;
+            transform: translateX(10px);
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+        /* Estilos para la tabla en la sección de horas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #006f95;
+            color: #fff;
+        }
+        td button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        td button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
 
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd; /* Borde suave */
-    text-align: left;
-}
+        /* Estilos para el contenedor de Gantt */
+        #gantt_here {
+            width: 100%;
+            height: 500px;
+        }
 
-th {
-    background-color: #006f95; /* Azul */
-    color: #fff;
-}
+        /* Estilo para la imagen en la esquina superior derecha */
+        .top-right-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 28px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
 
-td button {
-    background-color: #4caf50; /* Verde */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
+        /* Efecto hover en la imagen en la esquina superior derecha */
+        .top-right-image:hover {
+            transform: scale(1.1);
+        }
 
-td button:hover {
-    background-color: #45a049; /* Hover verde más oscuro */
-}
+        /* Ajustes para diseño responsive */
+        @media (max-width: 600px) {
+            .container, .containerbis {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .top-right-image {
+                width: 24px;
+            }
+
+            button {
+                padding: 12px;
+            }
+
+            .back-button {
+                font-size: 18px;
+            }
+
+            table th, table td {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            table input {
+                width: 100%;
+            }
+        }

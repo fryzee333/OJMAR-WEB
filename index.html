@@ -6,155 +6,8 @@
     <title>Inicio de Sesión</title>
     <link rel="stylesheet" href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css"> <!-- Enlace a la librería CSS de DHTMLX Gantt -->
     <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script> <!-- Enlace a la librería JS de DHTMLX Gantt -->
-    <style>
-        /* Estilos generales para el cuerpo de la página */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 20px;
-            background-color: #f7f7f7;
-        }
-
-        /* Estilos para los contenedores del login y menús */
-        .container, .containerbis {
-            width: 90%;
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            position: relative;
-            background-color: #fff;
-        }
-
-        /* La clase containerbis es para el contenedor más grande que incluye el Gantt */
-        .containerbis {
-            max-width: 800px;
-        }
-
-        /* Estilo para esconder elementos cuando no se usan */
-        .hidden {
-            display: none;
-        }
-
-        /* Estilos para los botones */
-        button {
-            margin-top: 10px;
-            padding: 12px;
-            width: 100%;
-            cursor: pointer;
-            background-color: #006f95;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        /* Efecto hover en los botones */
-        button:hover {
-            background-color: #005b7f;
-            transform: scale(1.05);
-        }
-
-        /* Estilo para el botón de volver */
-        .back-button {
-            position: absolute;
-            top: -7px;
-            left: -170px;
-            background-color: transparent;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            color: #007bff;
-            transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        /* Efecto hover en el botón de volver */
-        .back-button:hover {
-            background-color: transparent;
-            color: #005b7f;
-            transform: translateX(10px);
-        }
-
-        /* Estilos para la tabla en la sección de horas */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        th {
-            background-color: #006f95;
-            color: #fff;
-        }
-        td button {
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        td button:hover {
-            background-color: #45a049;
-            transform: scale(1.1);
-        }
-
-        /* Estilos para el contenedor de Gantt */
-        #gantt_here {
-            width: 100%;
-            height: 500px;
-        }
-
-        /* Estilo para la imagen en la esquina superior derecha */
-        .top-right-image {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 28px;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        /* Efecto hover en la imagen en la esquina superior derecha */
-        .top-right-image:hover {
-            transform: scale(1.1);
-        }
-
-        /* Ajustes para diseño responsive */
-        @media (max-width: 600px) {
-            .container, .containerbis {
-                width: 90%;
-                padding: 15px;
-            }
-
-            .top-right-image {
-                width: 24px;
-            }
-
-            button {
-                padding: 12px;
-            }
-
-            .back-button {
-                font-size: 18px;
-            }
-
-            table th, table td {
-                font-size: 14px;
-                padding: 8px;
-            }
-
-            table input {
-                width: 100%;
-            }
-        }
-    </style>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Sección de login -->
@@ -191,41 +44,6 @@
         <div id="gantt_here" style="margin-top: 20px;"></div> <!-- Contenedor para el gráfico de Gantt -->
     </div>
 
-    <script>
-        // Función para mostrar diferentes secciones de la página
-        function goBack(sectionId) {
-            showSection(sectionId);
-        }
-
-        // Función para mostrar una sección y ocultar las demás
-        function showSection(sectionId) {
-            document.querySelectorAll('.container, .containerbis').forEach(el => el.classList.add('hidden'));
-            document.getElementById(sectionId).classList.remove('hidden');
-        }
-
-        // Inicializa el gráfico de Gantt
-        gantt.init("gantt_here");
-        gantt.parse({
-            data: [
-                { id: 1, text: "Fase 1", start_date: "04-03-2025", duration: 168, progress: 0 },
-                { id: 2, text: "Definición de detalle", start_date: "16-09-2025", duration: 22, parent: 1, progress: 0 },
-                { id: 3, text: "Lanzamiento", start_date: "04-03-2025", duration: 1, parent: 1, progress: 0 },
-                { id: 4, text: "Estudio Factibilidad", start_date: "05-03-2025", duration: 167, progress: 0 },
-                { id: 5, text: "Análisis de Patentes", start_date: "06-08-2025", duration: 2, parent: 4, progress: 0 }
-            ]
-        });
-
-        // Función para iniciar sesión
-        function login() {
-            document.getElementById('login').classList.add('hidden');
-            document.getElementById('menu').classList.remove('hidden');
-        }
-
-        // Al cargar la página, muestra la sección de login
-        window.onload = function() {
-            showSection('login');
-        }
-    </script>
 
     <!-- Sección de registro de horas trabajadas -->
     <div id="horas" class="container hidden">
@@ -264,6 +82,27 @@
         </table>
         <button onclick="guardarHoras()">Guardar Horas</button> <!-- Botón para guardar las horas -->
     </div>
+    <script>
+
+        // Inicializa el gráfico de Gantt
+        gantt.init("gantt_here");
+        gantt.parse({
+            data: [
+                { id: 1, text: "Fase 1", start_date: "04-03-2025", duration: 168, progress: 0 },
+                { id: 2, text: "Definición de detalle", start_date: "16-09-2025", duration: 22, parent: 1, progress: 0 },
+                { id: 3, text: "Lanzamiento", start_date: "04-03-2025", duration: 1, parent: 1, progress: 0 },
+                { id: 4, text: "Estudio Factibilidad", start_date: "05-03-2025", duration: 167, progress: 0 },
+                { id: 5, text: "Análisis de Patentes", start_date: "06-08-2025", duration: 2, parent: 4, progress: 0 }
+            ]
+        });
+
+        // Función para iniciar sesión
+        function login() {
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('menu').classList.remove('hidden');
+        }
+
+    </script>
 
     <!-- Sección de administración de horas -->
     <div id="admin" class="container hidden">
@@ -303,56 +142,5 @@
         <button onclick="guardarHorasAdmin()">Guardar Horas Admin</button> <!-- Botón para guardar las horas modificadas -->
     </div>
 
-    <script>
-        // Función para guardar las horas trabajadas por un usuario
-        function guardarHoras() {
-            let fase1Horas = document.getElementById('fase1-input').value;
-            let detalleHoras = document.getElementById('detalle-input').value;
-            let lanzamientoHoras = document.getElementById('lanzamiento-input').value;
-            let factibilidadHoras = document.getElementById('factibilidad-input').value;
-            let patentesHoras = document.getElementById('patentes-input').value;
-
-            // Validación para asegurar que las horas estén entre 0 y 8
-            if (fase1Horas < 0 || fase1Horas > 8) return alert("Las horas deben estar entre 0 y 8");
-            if (detalleHoras < 0 || detalleHoras > 8) return alert("Las horas deben estar entre 0 y 8");
-            if (lanzamientoHoras < 0 || lanzamientoHoras > 8) return alert("Las horas deben estar entre 0 y 8");
-            if (factibilidadHoras < 0 || factibilidadHoras > 8) return alert("Las horas deben estar entre 0 y 8");
-            if (patentesHoras < 0 || patentesHoras > 8) return alert("Las horas deben estar entre 0 y 8");
-
-            // Guardar las horas en el almacenamiento local
-            const horasData = {
-                fase1: fase1Horas,
-                detalle: detalleHoras,
-                lanzamiento: lanzamientoHoras,
-                factibilidad: factibilidadHoras,
-                patentes: patentesHoras
-            };
-
-            localStorage.setItem('horasTrabajadas', JSON.stringify(horasData));
-            alert("Horas guardadas correctamente");
-        }
-
-        // Función para guardar las horas modificadas por un administrador
-        function guardarHorasAdmin() {
-            let fase1Horas = document.getElementById('fase1-admin-input').value;
-            let detalleHoras = document.getElementById('detalle-admin-input').value;
-            let lanzamientoHoras = document.getElementById('lanzamiento-admin-input').value;
-            let factibilidadHoras = document.getElementById('factibilidad-admin-input').value;
-            let patentesHoras = document.getElementById('patentes-admin-input').value;
-
-            // Crear un objeto con las horas modificadas
-            const horasData = {
-                fase1: fase1Horas,
-                detalle: detalleHoras,
-                lanzamiento: lanzamientoHoras,
-                factibilidad: factibilidadHoras,
-                patentes: patentesHoras
-            };
-
-            // Guardar las horas modificadas en el almacenamiento local
-            localStorage.setItem('horasTrabajadas', JSON.stringify(horasData));
-            alert("Horas modificadas correctamente");
-        }
-    </script>
 </body>
 </html>
