@@ -1,6 +1,4 @@
-       
-       
-        /* Estilos generales para el cuerpo de la página */
+/* Estilos generales para el cuerpo de la página */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -46,7 +44,7 @@
 
         /* Efecto hover en los botones */
         button:hover {
-            background-color: #005b7f;
+            background-color: #006f95;
             transform: scale(1.05);
         }
 
@@ -86,7 +84,7 @@
             color: #fff;
         }
         td button {
-            background-color: #4caf50;
+            background-color: #007bff;
             color: white;
             border: none;
             padding: 5px 10px;
@@ -94,7 +92,7 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
         td button:hover {
-            background-color: #45a049;
+            background-color: #007bff;
             transform: scale(1.1);
         }
 
@@ -147,3 +145,66 @@
                 width: 100%;
             }
         }
+
+/* Estilos para las pestañas */
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tab button.active {
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #007bff;
+}
+
+.tabcontent {
+    display: none;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+/* Estilos para el formulario de login */
+#login label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#login input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#login button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#login button:hover {
+    background-color: #007bff;
+}
